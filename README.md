@@ -1,4 +1,4 @@
-# removeSlackOldFilesPHP
+# Elimina archivos de slack desde línea de comandos
 Elimina archivos viejos de slack (por default de 2 meses hacia atrás, pero es configurable).
 
 Edita el archivo removeSlackOldFiles.php y añade tu token para que pueda funcionar. El token
