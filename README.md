@@ -10,3 +10,7 @@ instalaciones por default).
 
 El api de slack solo te devuelve 100 archivos por lo que será necesario si tienes muchos, 
 ejecutar el script tantas veces como sea necesario.
+
+Use el script bajo su propio riesgo.
+
+https://www.elsiglodetorreon.com.mx/blogs/ToRo/2267-eliminar-archivos-viejos-slack-con-php
