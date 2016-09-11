@@ -19,6 +19,7 @@
    $i=0;
    foreach($data->files AS $file) {
       $i++;
+      if($file->created > $tiempo) { echo " archivo más nuevo, no se elimina!\n"; continue; }
       echo "- Eliminando ".$i."/".sizeof($data->files)." [".date('d/m/Y',$file->created)."] ".$file->name."... ";
       curl_setopt($ch, CURLOPT_POSTFIELDS, ['file'=>$file->id]);
       curl_setopt($ch, CURLOPT_URL,"https://slack.com/api/files.delete?token=".$token);
