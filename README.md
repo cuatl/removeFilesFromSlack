@@ -9,8 +9,7 @@ Luego simplemente ejecuta el script, es necesario que tenga curl instalado (vien
 instalaciones por default).
 
 Para instalar curl (en el caso de que no se tenga), bastaría con:
-
-    sudo apt install php-curl
+`sudo apt install php-curl`
 
 El api de slack solo te devuelve 100 archivos por lo que será necesario si tienes muchos, 
 ejecutar el script tantas veces como sea necesario.
