@@ -13,19 +13,23 @@
 
    /* open connection */
    $ch = curl_init();
+
    curl_setopt($ch, CURLOPT_POSTFIELDS, $datas);
    curl_setopt($ch, CURLOPT_POST, 1); 
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-   curl_setopt($ch, CURLOPT_URL, "https://slack.com/api/files.list?token=".$token."&ts_to=".$tiempo); 
-   $result = curl_exec($ch); $data = json_decode($result);
+   curl_setopt($ch, CURLOPT_URL, "https://slack.com/api/files.list?token=".$token."&ts_to=".$tiempo);
+
+   $result = curl_exec($ch);
+   $data = json_decode($result);
 
    /* error */
    if (!isset($data->ok) or empty($data->files)) {
-      echo "No existen archivos < ".strftime("%c",$tiempo).".\n"; exit();
+      echo "No existen archivos < ".strftime("%c", $tiempo).".\n";
+       exit();
    }
 
    /* success! */
-   echo "=== Encontramos ".sizeof($data->files)." archivos más viejos de ".strftime("%c",$tiempo)."\n\n";
+   echo "=== Encontramos ".sizeof($data->files)." archivos más viejos de ".strftime("%c", $tiempo)."\n\n";
 
    $i=0;
 
@@ -36,10 +40,10 @@
          continue;
       }
 
-      echo "- Eliminando ".$i."/".sizeof($data->files)." [".date('d/m/Y',$file->created)."] ".$file->name."... ";
+      echo "- Eliminando ".$i."/".sizeof($data->files)." [".date('d/m/Y', $file->created)."] ".$file->name."... ";
       curl_setopt($ch, CURLOPT_POSTFIELDS, ['file'=>$file->id]);
       curl_setopt($ch, CURLOPT_URL,"https://slack.com/api/files.delete?token=".$token);
-      
+
       $result = curl_exec($ch); 
       $tmp = json_decode($result);
 
