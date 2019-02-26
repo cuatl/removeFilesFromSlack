@@ -14,8 +14,9 @@
    /* open connection */
    $ch = curl_init();
    curl_setopt($ch, CURLOPT_POSTFIELDS, $datas);
-   curl_setopt($ch, CURLOPT_POST,1); curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-   curl_setopt($ch, CURLOPT_URL,"https://slack.com/api/files.list?token=".$token."&ts_to=".$tiempo); 
+   curl_setopt($ch, CURLOPT_POST, 1); 
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+   curl_setopt($ch, CURLOPT_URL, "https://slack.com/api/files.list?token=".$token."&ts_to=".$tiempo); 
    $result = curl_exec($ch); $data = json_decode($result);
 
    /* error */
@@ -38,7 +39,9 @@
       echo "- Eliminando ".$i."/".sizeof($data->files)." [".date('d/m/Y',$file->created)."] ".$file->name."... ";
       curl_setopt($ch, CURLOPT_POSTFIELDS, ['file'=>$file->id]);
       curl_setopt($ch, CURLOPT_URL,"https://slack.com/api/files.delete?token=".$token);
-      $result = curl_exec($ch); $tmp = json_decode($result);
+      
+      $result = curl_exec($ch); 
+      $tmp = json_decode($result);
 
       if (isset($tmp->ok))
          echo "ok!\n";
