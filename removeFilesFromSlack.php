@@ -6,7 +6,7 @@
    /* get token at https://api.slack.com/web (test token it is ok!) */
 
    $token = "YOUR_TOKEN_HERE"; //token
-   $datas = ["token"=> $token, "ts_to"=> $tiempo]; //data sent
+   $datas = ["token" => $token, "ts_to" => $tiempo]; //data sent
 
    if (empty($token) || $token == 'YOUR_TOKEN_HERE') 
       die ($argv[0]." - invalid token\n");
@@ -25,7 +25,7 @@
    /* error */
    if (!isset($data->ok) or empty($data->files)) {
       echo "No existen archivos < ".strftime("%c", $tiempo).".\n";
-       exit();
+      exit();
    }
 
    /* success! */
@@ -41,7 +41,7 @@
       }
 
       echo "- Eliminando ".$i."/".sizeof($data->files)." [".date('d/m/Y', $file->created)."] ".$file->name."... ";
-      curl_setopt($ch, CURLOPT_POSTFIELDS, ['file'=>$file->id]);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, ['file' => $file->id]);
       curl_setopt($ch, CURLOPT_URL,"https://slack.com/api/files.delete?token=".$token);
 
       $result = curl_exec($ch); 
@@ -52,6 +52,8 @@
       else 
          echo $tmp->error."\n";
       sleep(1);
-   }
-   curl_close($ch);
+
+   }curl_close($ch);
    //EOF
+
+<?php ?>
