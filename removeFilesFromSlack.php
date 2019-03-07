@@ -53,7 +53,9 @@
          echo $tmp->error."\n";
       sleep(1);
 
-   }curl_close($ch);
+   }
+
+   curl_close($ch);
    //EOF
 
 <?php ?>
