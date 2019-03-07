@@ -58,4 +58,4 @@
    curl_close($ch);
    //EOF
 
-<?php ?>
+<?
